@@ -27,9 +27,9 @@ func init() {
 				&controllers.MasterController{},
 			),
 		),
-		beego.NSNamespace("/dashboard",
+		beego.NSNamespace("/master-event",
 			beego.NSInclude(
-				&controllers.DashboardController{},
+				&controllers.MasterEventController{},
 			),
 		),
 	)

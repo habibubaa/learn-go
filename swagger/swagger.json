@@ -57,6 +57,37 @@
                 }
             }
         },
+        "/master-event/GETMASTERMATERIS": {
+            "get": {
+                "tags": [
+                    "master-event"
+                ],
+                "description": "master_data\n\u003cbr\u003e",
+                "operationId": "MasterEventController.MASTER_DATA",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MASTERMATERIGET"
+                        }
+                    },
+                    "403": {
+                        "description": "\"Error\""
+                    },
+                    "500": {
+                        "description": "\"Error\""
+                    }
+                }
+            }
+        },
         "/master/GETCABANG/{KODE_WILAYAH}": {
             "get": {
                 "tags": [
@@ -367,6 +398,15 @@
                 }
             }
         },
+        "models.MASTERMATERIGET": {
+            "title": "MASTERMATERIGET",
+            "type": "object",
+            "properties": {
+                "MATERI": {
+                    "$ref": "#/definitions/models.interface"
+                }
+            }
+        },
         "models.MASTERSEGMENTGET": {
             "title": "MASTERSEGMENTGET",
             "type": "object",
@@ -389,6 +429,10 @@
         {
             "name": "master",
             "description": "MASTER LEARN\n"
+        },
+        {
+            "name": "master-event",
+            "description": "MASTER EVENT\n"
         }
     ]
 }

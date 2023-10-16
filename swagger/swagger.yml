@@ -42,6 +42,28 @@ paths:
           description: '{"code": 405,"message": "Error json"}'
         "500":
           description: '{"code": 500,"message": "Error sql / validasi"}'
+  /master-event/GETMASTERMATERIS:
+    get:
+      tags:
+      - master-event
+      description: |-
+        master_data
+        <br>
+      operationId: MasterEventController.MASTER_DATA
+      parameters:
+      - in: header
+        name: Authorization
+        description: Authorization Token
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.MASTERMATERIGET'
+        "403":
+          description: '"Error"'
+        "500":
+          description: '"Error"'
   /master/GETCABANG/{KODE_WILAYAH}:
     get:
       tags:
@@ -257,6 +279,12 @@ definitions:
         $ref: '#/definitions/models.interface'
       TRX_DATE:
         $ref: '#/definitions/models.interface'
+  models.MASTERMATERIGET:
+    title: MASTERMATERIGET
+    type: object
+    properties:
+      MATERI:
+        $ref: '#/definitions/models.interface'
   models.MASTERSEGMENTGET:
     title: MASTERSEGMENTGET
     type: object
@@ -273,3 +301,6 @@ tags:
 - name: master
   description: |
     MASTER LEARN
+- name: master-event
+  description: |
+    MASTER EVENT
