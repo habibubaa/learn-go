@@ -1,0 +1,394 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "LEARN API",
+        "description": "beego has a very cool tools to autogenerate documents for your API\n",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/login/user": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "description": "Get login sso kode aplikasi\n\u003cbr\u003e",
+                "operationId": "LoginController.LoginSSO",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "username",
+                        "description": "username sso",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "description": "password sso",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": 200,\"message\": \"Data berhasil disimpan\"}",
+                        "schema": {
+                            "$ref": "#/definitions/global.APILoginResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "{\"code\": 404,\"message\": \"Error not found\"}"
+                    },
+                    "405": {
+                        "description": "{\"code\": 405,\"message\": \"Error json\"}"
+                    },
+                    "500": {
+                        "description": "{\"code\": 500,\"message\": \"Error sql / validasi\"}"
+                    }
+                }
+            }
+        },
+        "/master/GETCABANG/{KODE_WILAYAH}": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "master_data\n\u003cbr\u003e",
+                "operationId": "MasterController.MASTER_DATA",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "KODE_WILAYAH",
+                        "description": "KODE_WILAYAH",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CabangDiperiksa"
+                        }
+                    },
+                    "403": {
+                        "description": "\"Error\""
+                    },
+                    "500": {
+                        "description": "\"Error\""
+                    }
+                }
+            }
+        },
+        "/master/GETMASTERSEGMENTS": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "master_data\n\u003cbr\u003e",
+                "operationId": "MasterController.MASTER_DATA",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.MASTERSEGMENTGET"
+                        }
+                    },
+                    "403": {
+                        "description": "\"Error\""
+                    },
+                    "500": {
+                        "description": "\"Error\""
+                    }
+                }
+            }
+        },
+        "/master/UpdateNilai": {
+            "put": {
+                "tags": [
+                    "master"
+                ],
+                "description": "master_data\n\u003cbr\u003e",
+                "operationId": "MasterController.MASTER_DATA",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "data",
+                        "description": "simpan data",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.FieldData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": 200,\"message\": \"Data berhasil disimpan\"}",
+                        "schema": {
+                            "$ref": "#/definitions/global.APILoginResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "{\"code\": 404,\"message\": \"Error not found\"}"
+                    },
+                    "405": {
+                        "description": "{\"code\": 405,\"message\": \"Error json\"}"
+                    },
+                    "500": {
+                        "description": "{\"code\": 500,\"message\": \"Error sql / validasi\"}"
+                    }
+                }
+            }
+        },
+        "/master/get/{TRX_DATE}/{KODE_UNIT}/{SEGMENT}/{IMP_STAGE}/{search}": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "pengambilan semua data GetDataLEARN\n\u003cbr\u003e",
+                "operationId": "MasterController.Get Flow",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "TRX_DATE",
+                        "description": "TRX_DATE",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "KODE_UNIT",
+                        "description": "KODE_UNIT",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "SEGMENT",
+                        "description": "SEGMENT",
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "IMP_STAGE",
+                        "description": "IMP_STAGE",
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "search",
+                        "description": "search by Reff Number",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"total\": int,\"data\": array value}",
+                        "schema": {
+                            "$ref": "#/definitions/models.GetDataLEARN"
+                        }
+                    },
+                    "403": {
+                        "description": "\"Error Token\""
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "global.APILoginResponse": {
+            "title": "APILoginResponse",
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "responseCode": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.CabangDiperiksa": {
+            "title": "CabangDiperiksa",
+            "type": "object",
+            "properties": {
+                "KODE_CABANG": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "NAMA_CABANG": {
+                    "$ref": "#/definitions/models.interface"
+                }
+            }
+        },
+        "models.FieldData": {
+            "title": "FieldData",
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "type": "string"
+                },
+                "IMP_STAGE": {
+                    "type": "string"
+                },
+                "KODE_UNIT": {
+                    "type": "string"
+                },
+                "LEARN_ADJUST_EXPECTED": {
+                    "type": "string"
+                },
+                "NAMA_USER_EDIT": {
+                    "type": "string"
+                },
+                "NIP_USER_EDIT": {
+                    "type": "string"
+                },
+                "SEGMENT": {
+                    "type": "string"
+                },
+                "TRX_DATE": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.GetDataLEARN": {
+            "title": "GetDataLEARN",
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "IMP_STAGE": {
+                    "type": "string"
+                },
+                "INISIAL": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "IS_SYARIAH": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "IS_ULAMM": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "IS_VC": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "IS_VS": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "KODE_CABANG": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "KODE_UNIT": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "KODE_WILAYAH": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "LAST_BALANCE": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "LEARN_ADJUST_EXPECTED": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "LEARN_EXPECTED": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "LEARN_TOTAL": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "NAMA_CABANG": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "NAMA_NASABAH": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "NAMA_UNIT": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "NAMA_WILAYAH": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "ORIG_COLLECT": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "REFF_NUMBER": {
+                    "type": "string"
+                },
+                "SEGMENT": {
+                    "type": "string"
+                },
+                "TIPE_KREDIT": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "TRX_DATE": {
+                    "$ref": "#/definitions/models.interface"
+                }
+            }
+        },
+        "models.MASTERSEGMENTGET": {
+            "title": "MASTERSEGMENTGET",
+            "type": "object",
+            "properties": {
+                "SEGMENT": {
+                    "$ref": "#/definitions/models.interface"
+                }
+            }
+        },
+        "models.interface": {
+            "title": "interface",
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "login",
+            "description": "Login\n"
+        },
+        {
+            "name": "master",
+            "description": "MASTER LEARN\n"
+        }
+    ]
+}

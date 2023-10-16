@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  nama-namespace: ganti-nama
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ganti-nama-app
+  ganti-namespace: ganti-nama
+  labels:
+    app: ganti-nama-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ganti-nama-app
+      version: blue
+  template:
+    metadata:
+      name: ganti-nama-app
+      labels:
+        app: ganti-nama-app
+        version: blue
+    spec:
+      containers:
+        - name: ganti-nama-app
+          image: 10.61.4.123:8087/ganti-image-name:latest
+          imagePullPolicy: Always
+      ports:
+        - containerPort: ganti-port-container
+      imagePullSecrets:
+        - name: ajzdockerkey
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: ganti-nama-app
+  ganti-namespace: ganti-nama
+  labels:
+    app: ganti-nama-app
+spec:
+  selector:
+    app: ganti-nama-app
+    version: blue
+  type: NodePort
+  ports:
+  - nodePort: ganti-target-port
+    port: 8090
+    targetPort: ganti-port-container
