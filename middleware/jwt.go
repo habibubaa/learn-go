@@ -3,7 +3,7 @@ package middleware
 import (
 	"encoding/json"
 	"fmt"
-	"learn_beego/global"
+	"learn_go/global"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"

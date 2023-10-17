@@ -8,8 +8,8 @@
 package routers
 
 import (
-	"learn_beego/controllers"
-	"learn_beego/middleware"
+	"learn_go/controllers"
+	"learn_go/middleware"
 
 	"github.com/astaxie/beego"
 )

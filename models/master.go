@@ -2,7 +2,7 @@ package models
 
 import (
 	"encoding/json"
-	"learn_beego/global"
+	"learn_go/global"
 
 	//"strconv"
 

@@ -1,7 +1,7 @@
 package test
 
 import (
-	_ "learn_beego/routers"
+	_ "learn_go/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"

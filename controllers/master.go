@@ -3,8 +3,8 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"learn_beego/global"
-	"learn_beego/models"
+	"learn_go/global"
+	"learn_go/models"
 
 	"github.com/astaxie/beego"
 	// "github.com/astaxie/beego/validation"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "learn_beego/routers"
+	_ "learn_go/routers"
 	"log"
 
 	"github.com/astaxie/beego"

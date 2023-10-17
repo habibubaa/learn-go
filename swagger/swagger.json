@@ -88,6 +88,52 @@
                 }
             }
         },
+        "/master-event/MASTERMATERIADD": {
+            "post": {
+                "tags": [
+                    "master-event"
+                ],
+                "description": "master_data\n\u003cbr\u003e",
+                "operationId": "MasterEventController.MASTER_DATA",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "data",
+                        "description": "simpan data",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.MASTERMATERIADD"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": 200,\"message\": \"Data berhasil disimpan\"}",
+                        "schema": {
+                            "$ref": "#/definitions/global.APILoginResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "{\"code\": 404,\"message\": \"Error not found\"}"
+                    },
+                    "405": {
+                        "description": "{\"code\": 405,\"message\": \"Error json\"}"
+                    },
+                    "500": {
+                        "description": "{\"code\": 500,\"message\": \"Error sql / validasi\"}"
+                    }
+                }
+            }
+        },
         "/master/GETCABANG/{KODE_WILAYAH}": {
             "get": {
                 "tags": [
@@ -395,6 +441,42 @@
                 },
                 "TRX_DATE": {
                     "$ref": "#/definitions/models.interface"
+                }
+            }
+        },
+        "models.MASTERMATERIADD": {
+            "title": "MASTERMATERIADD",
+            "type": "object",
+            "properties": {
+                "created_by": {
+                    "type": "string"
+                },
+                "created_date": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "id_klasifikasi_materi": {
+                    "type": "string"
+                },
+                "id_materi": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "string"
+                },
+                "modified_by": {
+                    "type": "string"
+                },
+                "modified_date": {
+                    "type": "string"
+                },
+                "nama_materi": {
+                    "type": "string"
+                },
+                "stat": {
+                    "type": "string"
                 }
             }
         },

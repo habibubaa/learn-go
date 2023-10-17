@@ -1,6 +1,6 @@
 package models
 
-//"learn_beego/global"
+//"learn_go/global"
 //"fmt"
 //"encoding/json"
 //"encoding/base64"

@@ -3,8 +3,8 @@ package controllers
 import (
 	"fmt"
 	"io/ioutil"
-	"learn_beego/global"
-	"learn_beego/models"
+	"learn_go/global"
+	"learn_go/models"
 	"net/http"
 	"net/http/cookiejar"
 	"strconv"
@@ -65,6 +65,8 @@ func (c *LoginController) GetSSO() {
 	MESSAGE := ""
 	NIK := ""
 	//BISNIS := ""
+
+	// fmt.Println("err: ", global.CheckNil(body, "login.[0].data.[0].idsdm"))
 
 	if RESPONSE == true {
 		IDSDM = global.CheckNil(body, "login.[0].data.[0].idsdm")

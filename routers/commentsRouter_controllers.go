@@ -6,7 +6,7 @@ import (
 )
 
 func init() {
-	beego.GlobalControllerRouter["learn_beego/controllers:LoginController"] = append(beego.GlobalControllerRouter["learn_beego/controllers:LoginController"],
+	beego.GlobalControllerRouter["learn_go/controllers:LoginController"] = append(beego.GlobalControllerRouter["learn_go/controllers:LoginController"],
 		beego.ControllerComments{
 			Method:           "GetSSO",
 			Router:           "/user",
@@ -15,7 +15,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["learn_beego/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_beego/controllers:MasterController"],
+	beego.GlobalControllerRouter["learn_go/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_go/controllers:MasterController"],
 		beego.ControllerComments{
 			Method:           "Get",
 			Router:           "/get/:TRX_DATE/:KODE_UNIT/:SEGMENT/:IMP_STAGE/:search",
@@ -24,7 +24,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["learn_beego/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_beego/controllers:MasterController"],
+	beego.GlobalControllerRouter["learn_go/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_go/controllers:MasterController"],
 		beego.ControllerComments{
 			Method:           "GETCABANG",
 			Router:           "/GETCABANG/:KODE_WILAYAH",
@@ -33,7 +33,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["learn_beego/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_beego/controllers:MasterController"],
+	beego.GlobalControllerRouter["learn_go/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_go/controllers:MasterController"],
 		beego.ControllerComments{
 			Method:           "GETMASTERSEGMENTS",
 			Router:           "/GETMASTERSEGMENTS",
@@ -42,7 +42,7 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["learn_beego/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_beego/controllers:MasterController"],
+	beego.GlobalControllerRouter["learn_go/controllers:MasterController"] = append(beego.GlobalControllerRouter["learn_go/controllers:MasterController"],
 		beego.ControllerComments{
 			Method:           "UpdateNilai",
 			Router:           "/UpdateNilai",
@@ -51,7 +51,9 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
-	beego.GlobalControllerRouter["learn_beego/controllers:MasterEventController"] = append(beego.GlobalControllerRouter["learn_beego/controllers:MasterEventController"],
+	// Event section
+
+	beego.GlobalControllerRouter["learn_go/controllers:MasterEventController"] = append(beego.GlobalControllerRouter["learn_go/controllers:MasterEventController"],
 		beego.ControllerComments{
 			Method:           "GETMASTERMATERIS",
 			Router:           "/GETMASTERMATERIS",
@@ -60,4 +62,13 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
+	
+	beego.GlobalControllerRouter["learn_go/controllers:MasterEventController"] = append(beego.GlobalControllerRouter["learn_go/controllers:MasterEventController"],
+		beego.ControllerComments{
+			Method: "MASTERMATERIADD",
+			Router: "/MASTERMATERIADD",
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Filters: nil,
+			Params: nil})
 }

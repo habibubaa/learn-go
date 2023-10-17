@@ -18,7 +18,7 @@ pipeline {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [],
                     userRemoteConfigs: [[credentialsId: 'git_lab_tes_ajz',
-                    url: 'http://10.61.4.35/mbgenardo0517/learn_beego.git']]])
+                    url: 'http://10.61.4.35/mbgenardo0517/learn_go.git']]])
                 }
             }
         stage('Building image') {
